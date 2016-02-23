@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222012927) do
+ActiveRecord::Schema.define(version: 20160222210434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,21 +19,15 @@ ActiveRecord::Schema.define(version: 20160222012927) do
   create_table "games", force: :cascade do |t|
     t.string   "game_number"
     t.date     "date"
-    t.string   "home_team"
-    t.string   "away_team"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "home_id"
+    t.integer  "away_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "forfeit",     default: false
   end
 
-  create_table "games_teams", force: :cascade do |t|
-    t.integer  "game_id"
-    t.integer  "team_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "games_teams", ["game_id"], name: "index_games_teams_on_game_id", using: :btree
-  add_index "games_teams", ["team_id"], name: "index_games_teams_on_team_id", using: :btree
+  add_index "games", ["away_id"], name: "index_games_on_away_id", using: :btree
+  add_index "games", ["home_id"], name: "index_games_on_home_id", using: :btree
 
   create_table "performances", force: :cascade do |t|
     t.integer  "pts"
@@ -58,9 +52,10 @@ ActiveRecord::Schema.define(version: 20160222012927) do
 
   create_table "players", force: :cascade do |t|
     t.string   "name"
+    t.string   "player_number"
     t.integer  "team_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "players", ["team_id"], name: "index_players_on_team_id", using: :btree
@@ -80,8 +75,6 @@ ActiveRecord::Schema.define(version: 20160222012927) do
     t.datetime "updated_at",      null: false
   end
 
-  add_foreign_key "games_teams", "games"
-  add_foreign_key "games_teams", "teams"
   add_foreign_key "performances", "games"
   add_foreign_key "performances", "players"
   add_foreign_key "players", "teams"

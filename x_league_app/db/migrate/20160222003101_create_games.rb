@@ -3,8 +3,8 @@ class CreateGames < ActiveRecord::Migration
     create_table :games do |t|
       t.string :game_number
       t.date :date
-      t.string :home_team
-      t.string :away_team
+      t.integer :home_id, index: true
+      t.integer :away_id, index: true
 
       t.timestamps null: false
     end
