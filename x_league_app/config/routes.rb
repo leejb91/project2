@@ -8,15 +8,17 @@ Rails.application.routes.draw do
     resources :players
   end
   resources :games do
-    resources :players, only: [:index]
+    resources :players, only: [:index] do
+      resources :performances
+    end
   end
   resources :players do
     resources :games, only: [:index]
-
+  end
   resources :sessions, only: [:new, :create, :destroy]
   get '/login', to: 'sessions#new'
 
-  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

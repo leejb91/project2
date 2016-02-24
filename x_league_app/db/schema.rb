@@ -20,7 +20,9 @@ ActiveRecord::Schema.define(version: 20160222210434) do
     t.string   "game_number"
     t.date     "date"
     t.integer  "home_id"
+    t.integer  "home_points"
     t.integer  "away_id"
+    t.integer  "away_points"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.boolean  "forfeit",     default: false

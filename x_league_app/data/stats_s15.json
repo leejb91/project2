@@ -3316,7 +3316,7 @@
             "points" : 66
           },
           "t2" : {
-            "name" : "Gold Lok Jr.",
+            "name" : "Gold Lock Jr.",
             "number" : 2,
             "players" : {
               "p1" : {
@@ -5752,7 +5752,7 @@
             "points" : 48
           },
           "t2" : {
-            "name" : "Gold Lok Jr.",
+            "name" : "Gold Lock Jr.",
             "number" : 2,
             "players" : {
               "p1" : {
@@ -11677,7 +11677,7 @@
             "points" : 49
           },
           "t2" : {
-            "name" : "Gold Lok Jr.",
+            "name" : "Gold Lock Jr.",
             "number" : 2,
             "players" : {
               "p1" : {
@@ -22394,7 +22394,7 @@
         "number" : 6,
         "teams" : {
           "t1" : {
-            "name" : "Gold Lok Jr.",
+            "name" : "Gold Lock Jr.",
             "number" : 1,
             "players" : {
               "p1" : {
@@ -28030,7 +28030,7 @@
             "points" : 58
           },
           "t2" : {
-            "name" : "Feelin' Tense",
+            "name" : "Feelin Tense",
             "number" : 2,
             "players" : {
               "p1" : {
@@ -39806,7 +39806,7 @@
         "forfeit" : true,
         "loser" : "Strangers",
         "number" : 24,
-        "winner" : "Gold Lok Jr."
+        "winner" : "Gold Lock Jr."
       },
       "g3" : {
         "number" : 3,
@@ -42561,7 +42561,7 @@
             "points" : 33
           },
           "t2" : {
-            "name" : "Gold Lok Jr.",
+            "name" : "Gold Lock Jr.",
             "number" : 2,
             "players" : {
               "p1" : {
@@ -45611,7 +45611,7 @@
             "points" : 54
           },
           "t2" : {
-            "name" : "Red Robbin Army",
+            "name" : "Red Ribbon Army",
             "number" : 2,
             "players" : {
               "p1" : {
@@ -48954,7 +48954,7 @@
             "points" : 33
           },
           "t2" : {
-            "name" : "Gold Lok Jr.",
+            "name" : "Gold Lock Jr.",
             "number" : 2,
             "players" : {
               "p1" : {

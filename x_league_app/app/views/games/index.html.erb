@@ -1,0 +1,10 @@
+<h1>Today's Games</h1>
+
+<% Team.find_by(name: "B.Y.O.B").games.each do |game| %>
+  <p>Game Number: <%= game.game_number %> date: <%= game.date %></p>
+  <p>Against: <%=if Team.find_by(id: game.home_id.to_i ).name == "B.Y.O.B" then Team.find_by(id: game.away_id.to_i ).name else Team.find_by(id: game.home_id.to_i ).name end%></p>
+
+
+<% end %>
+
+

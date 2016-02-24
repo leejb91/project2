@@ -47,7 +47,17 @@ def self.add_performance(player, team_name, game_id)
   Performance.create(
     game_id: game_id,
     player_id: player_id,
-    pts: player["points"]
+    pts: player["points"],
+    fgm: player["fgm"],
+    fga: player["fga"],
+    tpm: player["tpm"],
+    tpa: player["tpa"],
+    ftm: player["ftm"],
+    fta: player["fta"],
+    reb: player["rebounds"],
+    ast: player["assists"],
+    stl: player["steals"],
+    blk: player["blocks"]
   )
 end
 
@@ -75,7 +85,7 @@ hash.each do |wk, v|
       t2_id = create_team(game["teams"]["t2"]["name"]) unless team_exists(game["teams"]["t2"]["name"])
       t1_id ||= Team.find_by(name: game["teams"]["t1"]["name"]).id
       t2_id ||= Team.find_by(name: game["teams"]["t2"]["name"]).id
-      game_id = Game.create(date: dt, game_number: game["number"], home_id: t1_id, away_id: t2_id).id
+      game_id = Game.create(date: dt, game_number: game["number"], home_id: t1_id, home_points: game["teams"]["t1"]["points"], away_id: t2_id, away_points: game["teams"]["t2"]["points"]).id
     end
 
     if game.has_key?("teams") && game["teams"].has_key?("t1") && game["teams"]["t1"].has_key?("players")

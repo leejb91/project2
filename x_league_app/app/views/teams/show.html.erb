@@ -1,0 +1,146 @@
+<h1><%= @team.name %></h1>
+<% @games = @team.games %>
+<% @games = @games.sort_by {|h| h[:date]} %>
+<% @games.each do |game| %>
+  <p>Date: <%= game.date %></p>
+  <p>Against: <%=if game.home_team.name == @team.name then game.away_team.name else game.home_team.name end%></p>
+
+  <p><%= game.away_team.name %> <%= game.away_points %> : <%= game.home_points %> <%= game.home_team.name %></p>
+
+  <p>Home: <%= Team.find_by(id: game.home_id).name %></p>
+
+  <table class="table table-hover table-condensed table-bordered">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Name</th>
+        <th>Number</th>
+        <th>PTS</th>
+        <th>FGM-FGA</th>
+        <th>3PM-3PA</th>
+        <th>FTM-FTA</th>
+        <th>REB</th>
+        <th>AST</th>
+        <th>STL</th>
+        <th>BLK</th>
+      </tr>
+    </thead>
+  <% @total_pts = 0 %>
+  <% @total_fgm = 0 %>
+  <% @total_fga = 0 %>
+  <% @total_tpm = 0 %>
+  <% @total_tpa = 0 %>
+  <% @total_ftm = 0 %>
+  <% @total_fta = 0 %>
+  <% @total_reb = 0 %>
+  <% @total_ast = 0 %>
+  <% @total_stl = 0 %>
+  <% @total_blk = 0 %>
+  <% game.performances.each do |performance| %>
+
+    <tr>
+      <% if Player.find_by(id: performance.player_id).team_id == game.home_id %>
+      <td><%= Player.find_by(id: performance.player_id).name %></td>
+      <td>#<%= Player.find_by(id: performance.player_id).player_number %></td>
+      <td><%= performance.pts %></td>
+      <td><%= performance.fgm %>-<%= performance.fga %></td>
+      <td><%= performance.tpm %>-<%= performance.tpa %></td>
+      <td><%= performance.ftm %>-<%= performance.fta %></td>
+      <td><%= performance.reb %></td>
+      <td><%= performance.ast %></td>
+      <td><%= performance.stl %></td>
+      <td><%= performance.blk %></td>
+      <% @total_pts += performance.pts %>
+      <% @total_fgm += performance.fgm %><% @total_fga += performance.fga %>
+      <% @total_tpm += performance.tpm %><% @total_tpa += performance.tpa %>
+      <% @total_ftm += performance.ftm %><% @total_fta += performance.fta %>
+      <% @total_reb += performance.reb %>
+      <% @total_ast += performance.ast %>
+      <% @total_stl += performance.stl %>
+      <% @total_blk += performance.blk %>
+      <% end %>
+    </tr>
+
+<% end %>
+
+    <tr>
+      <td>Totals</td>
+      <td>-</td>
+      <td><%= @total_pts %></td>
+      <td><%= @total_fgm %>-<%= @total_fga %></td>
+      <td><%= @total_tpm %>-<%= @total_tpa %></td>
+      <td><%= @total_ftm %>-<%= @total_fta %></td>
+      <td><%= @total_reb %></td>
+      <td><%= @total_ast %></td>
+      <td><%= @total_stl %></td>
+      <td><%= @total_blk %></td>
+    </tr>
+  </table>
+
+  <p>Away: <%= Team.find_by(id: game.away_id).name %></p>
+
+  <table class="table table-hover table-condensed table-bordered">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>PTS</th>
+      <th>FGM-FGA</th>
+      <th>3PM-3PA</th>
+      <th>FTM-FTA</th>
+      <th>REB</th>
+      <th>AST</th>
+      <th>STL</th>
+      <th>BLK</th>
+    </tr>
+  </thead>
+
+  <% @total_pts = 0 %>
+  <% @total_fgm = 0 %>
+  <% @total_fga = 0 %>
+  <% @total_tpm = 0 %>
+  <% @total_tpa = 0 %>
+  <% @total_ftm = 0 %>
+  <% @total_fta = 0 %>
+  <% @total_reb = 0 %>
+  <% @total_ast = 0 %>
+  <% @total_stl = 0 %>
+  <% @total_blk = 0 %>
+  <% game.performances.each do |performance| %>
+
+    <tr>
+      <% if Player.find_by(id: performance.player_id).team_id == game.away_id %>
+      <td><%= Player.find_by(id: performance.player_id).name %></td>
+      <td>#<%= Player.find_by(id: performance.player_id).player_number %></td>
+      <td><%= performance.pts %></td>
+      <td><%= performance.fgm %>-<%= performance.fga %></td>
+      <td><%= performance.tpm %>-<%= performance.tpa %></td>
+      <td><%= performance.ftm %>-<%= performance.fta %></td>
+      <td><%= performance.reb %></td>
+      <td><%= performance.ast %></td>
+      <td><%= performance.stl %></td>
+      <td><%= performance.blk %></td>
+      <% @total_pts += performance.pts %>
+      <% @total_fgm += performance.fgm %><% @total_fga += performance.fga %>
+      <% @total_tpm += performance.tpm %><% @total_tpa += performance.tpa %>
+      <% @total_ftm += performance.ftm %><% @total_fta += performance.fta %>
+      <% @total_reb += performance.reb %>
+      <% @total_ast += performance.ast %>
+      <% @total_stl += performance.stl %>
+      <% @total_blk += performance.blk %>
+      <% end %>
+    </tr>
+  <% end %>
+    <tr>
+      <td>Totals</td>
+      <td>-</td>
+      <td><%= @total_pts %></td>
+      <td><%= @total_fgm %>-<%= @total_fga %></td>
+      <td><%= @total_tpm %>-<%= @total_tpa %></td>
+      <td><%= @total_ftm %>-<%= @total_fta %></td>
+      <td><%= @total_reb %></td>
+      <td><%= @total_ast %></td>
+      <td><%= @total_stl %></td>
+      <td><%= @total_blk %></td>
+    </tr>
+  </table>
+<% end %>

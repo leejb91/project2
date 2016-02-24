@@ -8,4 +8,15 @@ class GamesController < ApplicationController
     @teams = Team.order(:name)
   end
 
+  def index
+    @games = Game.all
+    @players = Player.all
+    @performances = Performance.all
+    @teams = Team.all
+  end
+
+  def show
+    @game = Game.find(params[:id])
+  end
+
 end
