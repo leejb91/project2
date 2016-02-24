@@ -1,0 +1,9 @@
+<% @teams = @teams.sort_by {|h| h[:name]} %>
+
+<div class="team_page">
+  <% @teams.each do |team| %>
+  <div class="team_links">
+    <%= link_to team.name, team %>
+  </div>
+  <% end %>
+</div>

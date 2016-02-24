@@ -11,17 +11,30 @@
 </head>
 <body>
 <div class="container">
-  <p>
-    <% if current_user %>
-      Welcome, <%= current_user.name %>
-      &nbsp;&nbsp;|&nbsp;&nbsp;
-      <%= link_to 'Logout', session_path('dummy'), method: :delete %>
-    <% else %>
-      <%= link_to 'Login', login_path %>
-      &nbsp;&nbsp;|&nbsp;&nbsp;
-      <%= link_to 'Sign Up', new_user_path %>
-    <% end %>
-  </p>
+
+
+  <% if current_user %>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <ul class="nav navbar-nav pull-left">
+      <li><%= link_to 'X-League', root_path %></li>
+    </ul>
+    <ul class="nav navbar-nav pull-right">
+      <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to 'Teams', teams_path %></li>
+      <li><%= link_to 'Players', players_path %></li>
+      <li><%= link_to 'Logout', session_path('dummy'), method: :delete %></li>
+    </ul>
+  </header>
+
+
+      <% else %>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <ul class="nav navbar-nav pull-right">
+      <li><%= link_to 'Login', login_path %></li>
+      <li><%= link_to 'Sign Up', new_user_path %></li>
+    </ul>
+  </header>
+      <% end %>
 
 <%= yield %>
 </div>

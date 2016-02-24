@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # root 'houses#index'
+  root 'games#index'
   resources :users, only: [:new, :create]
 
   resources :games

@@ -3041,7 +3041,7 @@
             "points" : 68
           },
           "t2" : {
-            "name" : "Got Emmm",
+            "name" : "Got EMMM",
             "number" : 2,
             "players" : {
               "p1" : {
@@ -6529,7 +6529,7 @@
       },
       "g19" : {
         "forfeit" : true,
-        "loser" : "Got Emmm",
+        "loser" : "Got EMMM",
         "number" : 19,
         "winner" : "BBHMM"
       },
@@ -6760,7 +6760,7 @@
         "forfeit" : true,
         "loser" : "Lyons",
         "number" : 22,
-        "winner" : "Got Emmm"
+        "winner" : "Got EMMM"
       },
       "g3" : {
         "number" : 3,
@@ -18333,7 +18333,7 @@
             "points" : 54
           },
           "t2" : {
-            "name" : "Got Emmm",
+            "name" : "Got EMMM",
             "number" : 2,
             "players" : {
               "p1" : {
@@ -25060,7 +25060,7 @@
             "points" : 47
           },
           "t2" : {
-            "name" : "Got Emmm",
+            "name" : "Got EMMM",
             "number" : 2,
             "players" : {
               "p1" : {
@@ -28915,7 +28915,7 @@
         "number" : 15,
         "teams" : {
           "t1" : {
-            "name" : "Got Emmm",
+            "name" : "Got EMMM",
             "number" : 1,
             "players" : {
               "p1" : {
@@ -32470,7 +32470,7 @@
         "number" : 10,
         "teams" : {
           "t1" : {
-            "name" : "Got Emmm",
+            "name" : "Got EMMM",
             "number" : 1,
             "players" : {
               "p1" : {
@@ -39788,7 +39788,7 @@
         "forfeit" : true,
         "loser" : "Triple Threat",
         "number" : 21,
-        "winner" : "Got Emmm"
+        "winner" : "Got EMMM"
       },
       "g22" : {
         "forfeit" : true,
