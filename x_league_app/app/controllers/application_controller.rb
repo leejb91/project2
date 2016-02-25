@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
       redirect_to login_path, alert: 'Not authorized - you must be logged in!' if current_user.nil?
   end
 
+  def admin_authorize
+      redirect_to root_path, alert: 'Not authorized - you must be an admin!' unless current_user && current_user.admin
+  end
+
   private
     helper_method :current_user
 

@@ -1,5 +1,22 @@
-<h2>Welcome to X League's Statistics Web App</h2>
+
+<% if current_user %>
+
 <h2>Welcome, <%= current_user.name %></h2>
 
+<p>Choose your <%= link_to "Favorite Player", players_path %></p>
+
+<% if current_user.admin %>
+<%= link_to "edit teams", teams_path %>
+<% end %>
+
+<% else %>
+
+<h2>Welcome to X League's Statistics Web App</h2>
 
 <%= link_to "TEAMS", teams_path %> <%= link_to "PLAYERS", players_path %>
+<% end %>
+
+
+
+
+

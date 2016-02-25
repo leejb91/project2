@@ -1,0 +1,53 @@
+<h1>New Game</h1>
+<%= form_for @game, :html => {:class => "form-horizontal center"} do |f| %>
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :game_number %>
+    <br>
+    <%= f.text_field :game_number, class: "col-md-4"  %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :date %>
+    <br>
+    <%= f.text_field :date, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :home_id %>
+    <br>
+    <%= f.collection_select :home_id, Team.order(:name), :id, :name, include_blank: true, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :home_points %>
+    <br>
+    <%= f.text_field :home_points, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :away_id %>
+    <br>
+    <%= f.collection_select :away_id, Team.order(:name), :id, :name, include_blank: true, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :away_points %>
+    <br>
+    <%= f.text_field :away_points, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <%= f.submit "New Game" %>
+
+<% end %>

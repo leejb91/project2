@@ -47,17 +47,17 @@ def self.add_performance(player, team_name, game_id)
   Performance.create(
     game_id: game_id,
     player_id: player_id,
-    pts: player["points"],
-    fgm: player["fgm"],
-    fga: player["fga"],
-    tpm: player["tpm"],
-    tpa: player["tpa"],
-    ftm: player["ftm"],
-    fta: player["fta"],
-    reb: player["rebounds"],
-    ast: player["assists"],
-    stl: player["steals"],
-    blk: player["blocks"]
+    pts: player["points"].to_i,
+    fgm: player["fgm"].to_i,
+    fga: player["fga"].to_i,
+    tpm: player["tpm"].to_i,
+    tpa: player["tpa"].to_i,
+    ftm: player["ftm"].to_i,
+    fta: player["fta"].to_i,
+    reb: player["rebounds"].to_i,
+    ast: player["assists"].to_i,
+    stl: player["steals"].to_i,
+    blk: player["blocks"].to_i
   )
 end
 
@@ -102,9 +102,8 @@ hash.each do |wk, v|
   end
 end
 
-
-
-
+User.create(
+  name: "xleague", password: "123456", password_confirmation: "123456", email: "xleaguenation@gmail.com", admin: true)
 
 
 

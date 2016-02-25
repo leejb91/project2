@@ -1,9 +1,14 @@
 li {
   list-style-type: none;
+  /*padding-top: 10px;*/
 }
 
-body {
-  padding-top: 50px;
+.navpad {
+  padding-top: 10px;
+}
+
+#button {
+  margin-top: 17px;
 }
 
 .team_page {
@@ -20,4 +25,18 @@ body {
 
 .player_page {
   padding-top: 50px;
+}
+
+.logo > img {
+  height: 70px;
+  width: 70px;
+}
+
+header {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.links {
+  padding-top: 10px;
 }

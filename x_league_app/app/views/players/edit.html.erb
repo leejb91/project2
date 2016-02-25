@@ -1,0 +1,31 @@
+<h1>Edit Player</h1>
+
+<%= form_for @player, :html => {:class => "form-horizontal center"} do |f| %>
+
+    <div class="form-group">
+        <div class="col-md-8">
+        <%= f.label :name %>
+        <br>
+        <%= f.text_field :name, class: "col-md-4" %>
+    </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-8">
+        <%= f.label :player_number %>
+        <br>
+        <%= f.text_field :player_number, class: "col-md-4" %>
+    </div>
+    </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+        <%= f.label :team_id %>
+        <br>
+        <%= f.collection_select :team_id, Team.order(:name), :id, :name, include_blank: true, class: "col-md-4" %>
+    </div>
+    </div>
+
+    <%= f.submit "Submit changes" %>
+
+<% end %>

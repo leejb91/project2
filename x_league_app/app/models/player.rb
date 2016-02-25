@@ -3,4 +3,5 @@ class Player < ActiveRecord::Base
   has_many :performances
   has_many :games, through: :performances
   # has_and_belongs_to_many :games
+
 end

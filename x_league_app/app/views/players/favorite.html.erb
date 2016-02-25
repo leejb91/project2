@@ -1,9 +1,9 @@
-<h1><%= @player.name %> #<%= @player.player_number %> <%= Team.find_by(id: @player.team_id).name %></h1>
+<h1>Your Player: <%= @player.name %></h1>
 
-  <h2>Season Stats</h2>
+  <h2>Game Stats</h2>
     <table class="table table-hover table-condensed table-bordered">
-      <thead class="thead-inverse">
-        <tr>
+      <thead>
+        <tr class="active">
           <th>Date</th>
           <th>Opponent</th>
           <th>PTS</th>
@@ -59,18 +59,18 @@
       </tr>
     <% end %>
 
-    <tr>
-      <td>Totals</td>
-      <td>-</td>
-      <td><%= @total_pts %></td>
-      <td><%= @total_fgm %>-<%= @total_fga %></td>
-      <td><%= @total_tpm %>-<%= @total_tpa %></td>
-      <td><%= @total_ftm %>-<%= @total_fta %></td>
-      <td><%= @total_reb %></td>
-      <td><%= @total_ast %></td>
-      <td><%= @total_stl %></td>
-      <td><%= @total_blk %></td>
-    </tr>
+    <thead class="active">
+      <th>Totals</th>
+      <th>-</th>
+      <th><%= @total_pts %></th>
+      <th><%= @total_fgm %>-<%= @total_fga %></th>
+      <th><%= @total_tpm %>-<%= @total_tpa %></th>
+      <th><%= @total_ftm %>-<%= @total_fta %></th>
+      <th><%= @total_reb %></th>
+      <th><%= @total_ast %></th>
+      <th><%= @total_stl %></th>
+      <th><%= @total_blk %></th>
+    </thead>
 
     </table>
 
@@ -80,13 +80,14 @@
 <% @games = @games.sort_by {|h| h[:date]} %>
 <% @games.each do |game| %>
 
-  <h3><%= game.away_team.name %> <%= game.away_points %> : <%= game.home_points %> <%= game.home_team.name %></h3>
+  <h3><%= game.home_team.name %> <%= game.home_points %> : <%= game.away_points %> <%= game.away_team.name %> </h3>
 
+  <h4><%= game.date.strftime("%m/%d/%Y") %></h4>
   <h4>Home: <%= Team.find_by(id: game.home_id).name %></h4>
 
   <table class="table table-hover table-condensed table-bordered">
     <thead class="thead-inverse">
-      <tr>
+      <tr class="active">
         <th>Date</th>
         <th>Number</th>
         <th>PTS</th>
@@ -138,25 +139,27 @@
 
 <% end %>
 
-    <tr>
-      <td>Totals</td>
-      <td>-</td>
-      <td><%= @total_pts %></td>
-      <td><%= @total_fgm %>-<%= @total_fga %></td>
-      <td><%= @total_tpm %>-<%= @total_tpa %></td>
-      <td><%= @total_ftm %>-<%= @total_fta %></td>
-      <td><%= @total_reb %></td>
-      <td><%= @total_ast %></td>
-      <td><%= @total_stl %></td>
-      <td><%= @total_blk %></td>
-    </tr>
+    <thead>
+      <tr class="active">
+        <th>Totals</th>
+        <th>-</th>
+        <th><%= @total_pts %></th>
+        <th><%= @total_fgm %>-<%= @total_fga %></th>
+        <th><%= @total_tpm %>-<%= @total_tpa %></th>
+        <th><%= @total_ftm %>-<%= @total_fta %></th>
+        <th><%= @total_reb %></th>
+        <th><%= @total_ast %></th>
+        <th><%= @total_stl %></th>
+        <th><%= @total_blk %></th>
+      </tr>
+    </thead>
   </table>
 
-  <h4>Away: <%= Team.find_by(id: game.away_id).name %></h4>
+  <p>Away: <%= Team.find_by(id: game.away_id).name %></p>
 
   <table class="table table-hover table-condensed table-bordered">
-  <thead class="thead-inverse">
-    <tr>
+  <thead>
+    <tr class="active">
       <th>Name</th>
       <th>Number</th>
       <th>PTS</th>
@@ -206,17 +209,19 @@
       <% end %>
     </tr>
   <% end %>
-    <tr>
-      <td>Totals</td>
-      <td>-</td>
-      <td><%= @total_pts %></td>
-      <td><%= @total_fgm %>-<%= @total_fga %></td>
-      <td><%= @total_tpm %>-<%= @total_tpa %></td>
-      <td><%= @total_ftm %>-<%= @total_fta %></td>
-      <td><%= @total_reb %></td>
-      <td><%= @total_ast %></td>
-      <td><%= @total_stl %></td>
-      <td><%= @total_blk %></td>
-    </tr>
+    <thead>
+      <tr class="active">
+        <th>Totals</th>
+        <th>-</th>
+        <th><%= @total_pts %></th>
+        <th><%= @total_fgm %>-<%= @total_fga %></th>
+        <th><%= @total_tpm %>-<%= @total_tpa %></th>
+        <th><%= @total_ftm %>-<%= @total_fta %></th>
+        <th><%= @total_reb %></th>
+        <th><%= @total_ast %></th>
+        <th><%= @total_stl %></th>
+        <th><%= @total_blk %></th>
+      </tr>
+    </thead>
   </table>
 <% end %>

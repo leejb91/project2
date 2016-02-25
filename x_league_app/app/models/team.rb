@@ -18,4 +18,7 @@ class Team < ActiveRecord::Base
     where(name: "B.Y.O.B")
   end
 
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
 end

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :games
   resources :players
+  resources :performances
   resources :teams, shallow: true do
     resources :players
   end
@@ -18,6 +19,8 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   get '/login', to: 'sessions#new'
 
+  get '/favorite/:id/pick', to: 'players#pick_favorite', as: "pick_favorite"
+  get '/favorite/:id', to: 'players#favorite', as: "favorite"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

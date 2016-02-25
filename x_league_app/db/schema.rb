@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222210434) do
+ActiveRecord::Schema.define(version: 20160224201717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,21 +32,21 @@ ActiveRecord::Schema.define(version: 20160222210434) do
   add_index "games", ["home_id"], name: "index_games_on_home_id", using: :btree
 
   create_table "performances", force: :cascade do |t|
-    t.integer  "pts",        default: 0
-    t.integer  "fgm",        default: 0
-    t.integer  "fga",        default: 0
-    t.integer  "tpm",        default: 0
-    t.integer  "tpa",        default: 0
-    t.integer  "ftm",        default: 0
-    t.integer  "fta",        default: 0
-    t.integer  "reb",        default: 0
-    t.integer  "ast",        default: 0
-    t.integer  "stl",        default: 0
-    t.integer  "blk",        default: 0
+    t.integer  "pts"
+    t.integer  "fgm"
+    t.integer  "fga"
+    t.integer  "tpm"
+    t.integer  "tpa"
+    t.integer  "ftm"
+    t.integer  "fta"
+    t.integer  "reb"
+    t.integer  "ast"
+    t.integer  "stl"
+    t.integer  "blk"
     t.integer  "player_id"
     t.integer  "game_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "performances", ["game_id"], name: "index_performances_on_game_id", using: :btree
@@ -73,8 +73,10 @@ ActiveRecord::Schema.define(version: 20160222210434) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
+    t.boolean  "admin"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "favorite"
   end
 
   add_foreign_key "performances", "games"

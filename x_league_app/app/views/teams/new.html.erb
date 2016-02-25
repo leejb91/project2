@@ -1,0 +1,23 @@
+<h1>New Team</h1>
+
+<%= form_for @team, :html => {:class => "form-horizontal center"} do |f| %>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :name %>
+    <br>
+    <%= f.text_field :name, class: "col-md-4"  %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :division %>
+    <br>
+    <%= f.text_field :division, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <%= f.submit "New Team" %>
+
+<% end %>

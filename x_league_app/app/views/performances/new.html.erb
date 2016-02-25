@@ -1,0 +1,112 @@
+<div class="container">
+<h1>New Performance</h1>
+<%= form_for @performance, :html => {:class => "form-horizontal center"} do |f| %>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :player_id %>
+    <br>
+    <%= f.collection_select :player_id, Player.order(:name), :id, :name, include_blank: true, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :game_id %>
+    <br>
+    <%= f.collection_select :game_id, Game.order(:id), :id, :id, include_blank: true, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :pts %>
+    <br>
+    <%= f.text_field :pts, class: "col-md-4"  %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :fgm %>
+    <br>
+    <%= f.text_field :fgm, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :fga %>
+    <br>
+    <%= f.text_field :fga, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :tpm %>
+    <br>
+    <%= f.text_field :tpm, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :tpa %>
+    <br>
+    <%= f.text_field :tpa, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :ftm %>
+    <br>
+    <%= f.text_field :tpm, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :fta %>
+    <br>
+    <%= f.text_field :tpa, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :reb %>
+    <br>
+    <%= f.text_field :reb, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :ast %>
+    <br>
+    <%= f.text_field :ast, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :stl %>
+    <br>
+    <%= f.text_field :stl, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.label :blk %>
+    <br>
+    <%= f.text_field :blk, class: "col-md-4" %>
+    </div>
+  </div>
+
+  <%= f.submit "New Game" %>
+
+<% end %>
+</div>
