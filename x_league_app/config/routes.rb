@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   get '/login', to: 'sessions#new'
+  get '/logout', to: 'sessions#destroy'
 
   get '/favorite/:id/pick', to: 'players#pick_favorite', as: "pick_favorite"
   get '/favorite/:id', to: 'players#favorite', as: "favorite"

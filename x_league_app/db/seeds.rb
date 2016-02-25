@@ -103,7 +103,7 @@ hash.each do |wk, v|
 end
 
 User.create(
-  name: "xleague", password: "123456", password_confirmation: "123456", email: "xleaguenation@gmail.com", admin: true)
+  name: "xleague", password: "123456", password_confirmation: "123456", email: "xleaguenation@gmail.com", admin: true, favorite: nil)
 
 
 
