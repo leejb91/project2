@@ -15,7 +15,7 @@ li {
   display: flex;
   flex-wrap: wrap;
   text-align: center;
-  padding-top: 50px;
+  padding-top: 10px;
 }
 
 .team_links {
@@ -24,7 +24,7 @@ li {
 }
 
 .player_page {
-  padding-top: 50px;
+  padding-top: 10px;
 }
 
 .logo > img {

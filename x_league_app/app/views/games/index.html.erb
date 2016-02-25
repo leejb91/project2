@@ -5,7 +5,7 @@
 
 <p>Choose your <%= link_to "Favorite Player", players_path %></p>
 
-<% if current_user.admin %>
+<% if current_user && current_user.admin %>
 <%= link_to "edit teams", teams_path %>
 <% end %>
 

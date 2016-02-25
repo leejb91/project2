@@ -1,4 +1,6 @@
 class PlayersController < ApplicationController
+  before_action :admin_authorize, only: [:new, :edit]
+
   def show
     @player = Player.find(params[:id])
   end

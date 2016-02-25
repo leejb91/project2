@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  before_action :admin_authorize, only: [:new, :edit]
 
   def new
     @team = Team.new

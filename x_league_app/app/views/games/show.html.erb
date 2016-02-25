@@ -1,6 +1,10 @@
 <h1>Game ID: <%= @game.game_number %></h1>
 <h3><%= Team.find_by(id: @game.home_id).name %> <%= @game.home_points %> : <%= @game.away_points %> <%= Team.find_by(id: @game.away_id).name %> </h3>
 
+<% if current_user.admin %>
+  <%= link_to "Edit", edit_game_path(@game.id) %>
+<% end %>
+
 <h4>Date: <%= @game.date.strftime("%m/%d/%Y") %></h4>
 
   <table class="table table-hover table-condensed table-bordered">

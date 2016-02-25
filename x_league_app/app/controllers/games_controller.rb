@@ -1,8 +1,5 @@
 class GamesController < ApplicationController
-  # before_action :set_house, only: [:show, :edit, :update, :destroy]
-   # add the line below
-  # before_action :authorize, except: [:index, :show]
-  before_action :admin_authorize, only: [:new]
+  before_action :admin_authorize, only: [:new, :edit]
 
   def new
     @game = Game.new

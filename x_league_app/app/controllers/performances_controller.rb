@@ -1,4 +1,6 @@
 class PerformancesController < ApplicationController
+  before_action :admin_authorize, only: [:new, :edit]
+
   def new
     @performance = Performance.new
   end
