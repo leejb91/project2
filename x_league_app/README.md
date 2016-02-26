@@ -3,7 +3,7 @@
 ##_X - L E A G U E_
 by Jerry Brown Lee
 
-GitHub: [https://github.com/leejb91/project2/tree/master/x_league_app](https://github.com/leejb91/project2/tree/master/x_league_app)
+GitHub: [https://github.com/leejb91/project2](https://github.com/leejb91/project2)
 
 Project Link: [https://shrouded-ocean-86275.herokuapp.com/](https://shrouded-ocean-86275.herokuapp.com/)
 
