@@ -1,5 +1,10 @@
 <h1><%= @player.name %> #<%= @player.player_number %> <%= Team.find_by(id: @player.team_id).name %></h1>
 
+<% if current_user && current_user.admin %>
+  <%= link_to "Edit", edit_player_path(@player.id) %>
+  <%= link_to "Delete", player_path, method: :delete, data: { confirm: "Are you sure you want to delete this player and all of its performances?"} %>
+<% end %>
+
   <h2>Season Stats</h2>
     <table class="table table-hover table-condensed table-bordered">
       <thead class="thead-inverse">
@@ -14,6 +19,9 @@
           <th>AST</th>
           <th>STL</th>
           <th>BLK</th>
+          <% if current_user && current_user.admin %>
+          <th></th>
+          <% end %>
         </tr>
       </thead>
 
@@ -36,9 +44,12 @@
       <tr>
         <td><%= performance.game.date.strftime("%m/%d/%Y") %></td>
         <td>
-          <%= if performance.game.home_id == @player.team_id
-          then Team.find_by(id: performance.game.away_id).name
-          else Team.find_by(id: performance.game.home_id).name end %>
+          <% if performance.game.home_id == @player.team_id %>
+          <% then %>
+          <%= link_to Team.find_by(id: performance.game.away_id).name, team_path(Team.find_by(id: performance.game.away_id).id) %>
+          <% else %>
+          <%= link_to Team.find_by(id: performance.game.home_id).name, team_path(Team.find_by(id: performance.game.home_id).id) %>
+          <% end %>
         </td>
         <td><%= performance.pts %></td>
         <td><%= performance.fgm %>-<%= performance.fga %></td>
@@ -48,6 +59,9 @@
         <td><%= performance.ast %></td>
         <td><%= performance.stl %></td>
         <td><%= performance.blk %></td>
+        <% if current_user && current_user.admin %>
+        <td><%= link_to "Edit", edit_performance_path(performance.id) %></td>
+        <% end %>
         <% @total_pts += performance.pts %>
         <% @total_fgm += performance.fgm %><% @total_fga += performance.fga %>
         <% @total_tpm += performance.tpm %><% @total_tpa += performance.tpa %>
@@ -70,6 +84,9 @@
       <td><%= @total_ast %></td>
       <td><%= @total_stl %></td>
       <td><%= @total_blk %></td>
+      <% if current_user && current_user.admin %>
+      <td>-</td>
+      <% end %>
     </tr>
 
     </table>
@@ -80,14 +97,14 @@
 <% @games = @games.sort_by {|h| h[:date]} %>
 <% @games.each do |game| %>
 
-  <h3><%= game.away_team.name %> <%= game.away_points %> : <%= game.home_points %> <%= game.home_team.name %></h3>
+  <h3><%= link_to "#{game.away_team.name} #{game.away_points} : #{game.home_points} #{game.home_team.name}", game_path(game.id) %></h3>
 
-  <h4>Home: <%= Team.find_by(id: game.home_id).name %></h4>
+  <h4>Home: <%= link_to Team.find_by(id: game.home_id).name, team_path(Team.find_by(id: game.home_id).id) %></h4>
 
   <table class="table table-hover table-condensed table-bordered">
     <thead class="thead-inverse">
       <tr>
-        <th>Date</th>
+        <th>Player</th>
         <th>Number</th>
         <th>PTS</th>
         <th>FGM-FGA</th>
@@ -114,9 +131,9 @@
   <% game.performances.each do |performance| %>
 
     <tr>
-      <% if Player.find_by(id: performance.player_id).team_id == game.home_id %>
-      <td><%= Player.find_by(id: performance.player_id).name %></td>
-      <td>#<%= Player.find_by(id: performance.player_id).player_number %></td>
+      <% if performance.player.team_id == game.home_id %>
+      <td><%= link_to performance.player.name, player_path(performance.player.id) %></td>
+      <td>#<%= performance.player.player_number %></td>
       <td><%= performance.pts %></td>
       <td><%= performance.fgm %>-<%= performance.fga %></td>
       <td><%= performance.tpm %>-<%= performance.tpa %></td>
@@ -152,12 +169,12 @@
     </tr>
   </table>
 
-  <h4>Away: <%= Team.find_by(id: game.away_id).name %></h4>
+  <h4>Away: <%= link_to Team.find_by(id: game.away_id).name, team_path(Team.find_by(id: game.away_id).id) %></h4>
 
   <table class="table table-hover table-condensed table-bordered">
   <thead class="thead-inverse">
     <tr>
-      <th>Name</th>
+      <th>Player</th>
       <th>Number</th>
       <th>PTS</th>
       <th>FGM-FGA</th>
@@ -184,9 +201,9 @@
   <% game.performances.each do |performance| %>
 
     <tr>
-      <% if Player.find_by(id: performance.player_id).team_id == game.away_id %>
-      <td><%= Player.find_by(id: performance.player_id).name %></td>
-      <td>#<%= Player.find_by(id: performance.player_id).player_number %></td>
+      <% if performance.player.team_id == game.away_id %>
+      <td><%= link_to performance.player.name, player_path(performance.player.id) %></td>
+      <td>#<%= performance.player.player_number %></td>
       <td><%= performance.pts %></td>
       <td><%= performance.fgm %>-<%= performance.fga %></td>
       <td><%= performance.tpm %>-<%= performance.tpa %></td>

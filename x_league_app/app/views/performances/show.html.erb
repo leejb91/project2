@@ -1,0 +1,75 @@
+<h3><%= @performance.player.name %> #<%= @performance.player.player_number %></h3>
+
+<% if current_user.admin %>
+  <%= link_to "Edit", edit_performance_path(@performance.id) %>
+  <%= link_to "Delete", performance_path(@performance.id), method: :delete, data: { confirm: "Are you sure you want to delete this performance?"} %>
+<% end %>
+
+<h3><%= Team.find_by(id: @performance.player.team_id).name %></h3>
+
+<h4><%= @performance.game.date.strftime("%m/%d/%Y") %></h4>
+<table class="table table-hover table-condensed table-bordered">
+    <thead class="thead-inverse">
+      <tr class="active">
+        <th>Name</th>
+        <th>Number</th>
+        <th>PTS</th>
+        <th>FGM-FGA</th>
+        <th>3PM-3PA</th>
+        <th>FTM-FTA</th>
+        <th>REB</th>
+        <th>AST</th>
+        <th>STL</th>
+        <th>BLK</th>
+      </tr>
+    </thead>
+  <% @total_pts = 0 %>
+  <% @total_fgm = 0 %>
+  <% @total_fga = 0 %>
+  <% @total_tpm = 0 %>
+  <% @total_tpa = 0 %>
+  <% @total_ftm = 0 %>
+  <% @total_fta = 0 %>
+  <% @total_reb = 0 %>
+  <% @total_ast = 0 %>
+  <% @total_stl = 0 %>
+  <% @total_blk = 0 %>
+
+    <tr>
+
+      <td><%= link_to Player.find_by(id: @performance.player_id).name, player_path(@performance.player_id) %></td>
+      <td>#<%= Player.find_by(id: @performance.player_id).player_number %></td>
+      <td><%= @performance.pts %></td>
+      <td><%= @performance.fgm %>-<%= @performance.fga %></td>
+      <td><%= @performance.tpm %>-<%= @performance.tpa %></td>
+      <td><%= @performance.ftm %>-<%= @performance.fta %></td>
+      <td><%= @performance.reb %></td>
+      <td><%= @performance.ast %></td>
+      <td><%= @performance.stl %></td>
+      <td><%= @performance.blk %></td>
+      <% @total_pts += @performance.pts %>
+      <% @total_fgm += @performance.fgm %><% @total_fga += @performance.fga %>
+      <% @total_tpm += @performance.tpm %><% @total_tpa += @performance.tpa %>
+      <% @total_ftm += @performance.ftm %><% @total_fta += @performance.fta %>
+      <% @total_reb += @performance.reb %>
+      <% @total_ast += @performance.ast %>
+      <% @total_stl += @performance.stl %>
+      <% @total_blk += @performance.blk %>
+
+    </tr>
+
+  <thead class="thead-inverse">
+    <tr class="active">
+      <th>Totals</th>
+      <th>-</th>
+      <th><%= @total_pts %></th>
+      <th><%= @total_fgm %>-<%= @total_fga %></th>
+      <th><%= @total_tpm %>-<%= @total_tpa %></th>
+      <th><%= @total_ftm %>-<%= @total_fta %></th>
+      <th><%= @total_reb %></th>
+      <th><%= @total_ast %></th>
+      <th><%= @total_stl %></th>
+      <th><%= @total_blk %></th>
+    </tr>
+  </thead>
+  </table>

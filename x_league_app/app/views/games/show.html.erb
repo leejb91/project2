@@ -1,8 +1,9 @@
 <h1>Game ID: <%= @game.game_number %></h1>
 <h3><%= Team.find_by(id: @game.home_id).name %> <%= @game.home_points %> : <%= @game.away_points %> <%= Team.find_by(id: @game.away_id).name %> </h3>
 
-<% if current_user.admin %>
+<% if current_user && current_user.admin %>
   <%= link_to "Edit", edit_game_path(@game.id) %>
+  <%= link_to "Delete", game_path, method: :delete, data: { confirm: "Are you sure you want to delete this game and all of its performances?"} %>
 <% end %>
 
 <h4>Date: <%= @game.date.strftime("%m/%d/%Y") %></h4>

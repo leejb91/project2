@@ -1,4 +1,10 @@
+<h2 class="index_title">TEAMS</h2>
+
 <% @teams = @teams.sort_by {|h| h[:name]} %>
+
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 
 <div class="team_page">
   <% @teams.each do |team| %>

@@ -7,6 +7,14 @@ li {
   padding-top: 10px;
 }
 
+.index_title {
+  text-align: center;
+}
+
+tr {
+  text-align: center;
+}
+
 #button {
   margin-top: 17px;
 }

@@ -1,3 +1,12 @@
+<% if current_user && current_user.admin %>
+  <h4>
+  <%= link_to "Create a Team", new_team_path %> ||
+  <%= link_to "Create a Player", new_player_path %> ||
+  <%= link_to "Create a Game", new_game_path %> ||
+  <%= link_to "Create a Performance", new_performance_path %>
+  </h4>
+<% end %>
+
 <h1>Your Player: <%= @player.name %></h1>
 
   <h2>Game Stats</h2>

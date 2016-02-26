@@ -1,4 +1,4 @@
-<h1>Edit Player</h1>
+<h1>Edit <%= link_to @player.name, player_path %></h1>
 
 <%= form_for @player, :html => {:class => "form-horizontal center"} do |f| %>
 

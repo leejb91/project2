@@ -5,6 +5,20 @@ class PerformancesController < ApplicationController
     @performance = Performance.new
   end
 
+  def create
+    @performance = Performance.new(params.require(:performance).permit(:player_id, :game_id, :pts, :fgm, :fga, :tpm, :tpa, :ftm, :fta, :reb, :ast, :stl, :blk))
+
+    if @performance.save
+      redirect_to performances_path
+    else
+      render :new
+    end
+  end
+
+  def show
+    @performance = Performance.find(params[:id])
+  end
+
   def edit
     @performance = Performance.find(params[:id])
   end
@@ -17,5 +31,12 @@ class PerformancesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @performance = Performance.find(params[:id])
+    @performance.destroy
+    flash[:notice] = "You have successfully deleted a performance!"
+    redirect_to performances_path
   end
 end

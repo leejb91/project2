@@ -12,7 +12,7 @@
     <div class="col-md-8">
     <%= f.label :date %>
     <br>
-    <%= f.text_field :date, class: "col-md-4" %>
+    <%= f.date_select :date, :order => [:month, :day, :year], class: "col-md-4" %>
     </div>
   </div>
 

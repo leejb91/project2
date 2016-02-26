@@ -5,6 +5,16 @@ class TeamsController < ApplicationController
     @team = Team.new
   end
 
+  def create
+    @team = Team.new(params.require(:team).permit(:name, :division))
+
+    if @team.save
+      redirect_to teams_path
+    else
+      render :new
+    end
+  end
+
   def show
     @team = Team.find(params[:id])
   end

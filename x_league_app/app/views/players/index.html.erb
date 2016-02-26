@@ -1,5 +1,9 @@
 <% @teams = @teams.sort_by {|h| h[:name]} %>
 
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
 <div class="player_page">
 <% @teams.each do |team| %>
   <div>

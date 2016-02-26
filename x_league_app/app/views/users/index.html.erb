@@ -1,0 +1,19 @@
+<% if current_user %>
+
+<h2>Welcome, <%= current_user.name %></h2>
+
+<p>Favorite a <%= link_to "player", players_path %> to make it your home page.</p>
+
+<% else %>
+
+<h2>Welcome to X League's Statistics Web App</h2>
+
+<p><%= link_to "Log in", login_path %> to select a favorite <%= link_to "player", players_path %> and make it your home page. </p>
+<% end %>
+
+<% if current_user && current_user.admin %>
+  <%= link_to "Create a Team", new_team_path %> ||
+  <%= link_to "Create a Player", new_player_path %> ||
+  <%= link_to "Create a Game", new_game_path %> ||
+  <%= link_to "Create a Performance", new_performance_path %>
+<% end %>

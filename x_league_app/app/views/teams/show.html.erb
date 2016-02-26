@@ -1,13 +1,18 @@
 <h1><%= @team.name %></h1>
+
+<% if current_user && current_user.admin %>
+  <%= link_to "Edit", edit_team_path(@team.id) %>
+<% end %>
+
 <% @games = @team.games %>
 <% @games = @games.sort_by {|h| h[:date]} %>
 <% @games.each do |game| %>
 
-  <h3><%= game.home_team.name %> <%= game.home_points %> :
-  <%= game.away_points %> <%= game.away_team.name %></h3>
+  <h3><%= link_to "#{game.home_team.name} #{game.home_points} :
+  #{game.away_points} #{game.away_team.name}", game_path %></h3>
   <h4>Date: <%= game.date.strftime("%m/%d/%Y") %></h4>
 
-  <p>Home: <%= Team.find_by(id: game.home_id).name %></p>
+  <p>Home: <%= link_to Team.find_by(id: game.home_id).name, team_path(Team.find_by(id: game.home_id).id) %></p>
 
   <table class="table table-hover table-condensed table-bordered">
     <thead class="thead-inverse">
@@ -22,6 +27,9 @@
         <th>AST</th>
         <th>STL</th>
         <th>BLK</th>
+        <% if current_user && current_user.admin %>
+        <th></th>
+        <% end %>
       </tr>
     </thead>
   <% @total_pts = 0 %>
@@ -35,6 +43,7 @@
   <% @total_ast = 0 %>
   <% @total_stl = 0 %>
   <% @total_blk = 0 %>
+
   <% game.performances.each do |performance| %>
 
     <tr>
@@ -49,6 +58,9 @@
       <td><%= performance.ast %></td>
       <td><%= performance.stl %></td>
       <td><%= performance.blk %></td>
+      <% if current_user && current_user.admin %>
+      <td><%= link_to "Edit", edit_performance_path(performance.id) %></td>
+      <% end %>
       <% @total_pts += performance.pts %>
       <% @total_fgm += performance.fgm %><% @total_fga += performance.fga %>
       <% @total_tpm += performance.tpm %><% @total_tpa += performance.tpa %>
@@ -73,11 +85,14 @@
       <th><%= @total_ast %></th>
       <th><%= @total_stl %></th>
       <th><%= @total_blk %></th>
+      <% if current_user && current_user.admin %>
+      <th>-</th>
+      <% end %>
     </tr>
   </thead>
   </table>
 
-  <p>Away: <%= Team.find_by(id: game.away_id).name %></p>
+  <p>Away: <%= link_to Team.find_by(id: game.away_id).name, team_path(Team.find_by(id: game.away_id).id) %>
 
   <table class="table table-hover table-condensed table-bordered">
   <thead class="thead-inverse">
@@ -92,6 +107,9 @@
       <th>AST</th>
       <th>STL</th>
       <th>BLK</th>
+      <% if current_user && current_user.admin %>
+      <th></th>
+      <% end %>
     </tr>
   </thead>
 
@@ -120,6 +138,9 @@
       <td><%= performance.ast %></td>
       <td><%= performance.stl %></td>
       <td><%= performance.blk %></td>
+      <% if current_user && current_user.admin %>
+        <td><%= link_to "Edit", edit_performance_path(performance.id) %></td>
+      <% end %>
       <% @total_pts += performance.pts %>
       <% @total_fgm += performance.fgm %><% @total_fga += performance.fga %>
       <% @total_tpm += performance.tpm %><% @total_tpa += performance.tpa %>
@@ -143,6 +164,9 @@
       <th><%= @total_ast %></th>
       <th><%= @total_stl %></th>
       <th><%= @total_blk %></th>
+      <% if current_user && current_user.admin %>
+      <th>-</th>
+      <% end %>
     </tr>
   </thead>
   </table>

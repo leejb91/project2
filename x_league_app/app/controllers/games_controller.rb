@@ -6,6 +6,17 @@ class GamesController < ApplicationController
     # @teams = Team.order(:name)
   end
 
+  def create
+    @game = Game.new(params.require(:game).permit(:game_number, :date, :home_id, :home_points, :away_id, :away_points))
+
+    if @game.save
+      flash[:notice] = "You have successfully created a game!"
+      redirect_to games_path
+    else
+      render:new
+    end
+  end
+
   def index
     @games = Game.all
     @players = Player.all
@@ -29,6 +40,16 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+  end
+
+  def destroy
+    @game = Game.find(params[:id])
+    @game.performances.each do |p|
+      p.destroy
+    end
+    @game.destroy
+    flash[:notice] = "You have successfully deleted a game!"
+    redirect_to games_path
   end
 
 end
