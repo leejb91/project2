@@ -9,6 +9,7 @@ class PerformancesController < ApplicationController
     @performance = Performance.new(params.require(:performance).permit(:player_id, :game_id, :pts, :fgm, :fga, :tpm, :tpa, :ftm, :fta, :reb, :ast, :stl, :blk))
 
     if @performance.save
+      flash[:notice] = "You have successfully created a performance!"
       redirect_to performances_path
     else
       render :new
