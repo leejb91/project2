@@ -35,7 +35,6 @@ The X-League commissioner will have the sole admin status to be able to create, 
 - HTML
 - CSS
 - Bootstrap
-- Javascript/jQuery
 - Heroku
 
 ##Design
