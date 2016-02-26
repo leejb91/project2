@@ -1,4 +1,6 @@
-#Project 2: X-League
+#Project 2:
+
+##_X - L E A G U E_
 by Jerry Brown Lee
 
 GitHub: [https://github.com/leejb91/project2/tree/master/x_league_app](https://github.com/leejb91/project2/tree/master/x_league_app)
@@ -12,9 +14,9 @@ I am currently taking part in a basketball league called X-League and found the 
 
 
 ##The App
-The application will allow users to view stats based on the team or player. In addition, if the user signs in, he will be able to set a favorite player to be portrayed on the home page after being signed in. Therefore, the user will no longer have to navigate through the players page and search for his player.
+The application will allow users to view stats based on the team or player. In addition, if the user signs up, he will be able to set a favorite player to be portrayed on the home page after logging in. Therefore, the user will no longer have to navigate through the players page and search for his player.
 
-The X-League commissioner will have the sole admin status to be able to create, update and delete information.
+The X-League commissioner will have the sole admin status to be able to create, update and delete game/team/player/performance information.
 
 ##Home Page
 ![Home Page](https://i.imgur.com/hthHGLY.png)
@@ -37,11 +39,12 @@ The X-League commissioner will have the sole admin status to be able to create, 
 - Heroku
 
 ##Design
-The website utilizes bootstrap to create a minimalistic look with just black and white colors. The stats are shown in tables with links that are intuitive for easy navigation.
+The website utilizes bootstrap to create a clean and modern look. The users (logged in or not) are able to navigate through the navigation bar or pages to view the stats for a team or player. If the user chooses to sign in, he/she will be able to choose a "favorite" player and set it as his/her home page for easy access. The stats are portrayed in tables with links that are intuitive for easy navigation.
 
 ##Get Started
 1. Open up your web browser.
 2. Input link https://shrouded-ocean-86275.herokuapp.com/.
+3. Log in to set up a personalized home page.
 
 ##Deploying to Heroku
 
@@ -62,3 +65,6 @@ The website utilizes bootstrap to create a minimalistic look with just black and
 4. Create a more intuitive teams/players page.
 5. Add values to the division attribute on teams to distinguish the teams' levels.
 2. Include pictures to home page to look more welcoming.
+
+##Suggestions
+Please send any questions, bugs, suggestions, etc. to leejb91@gmail.com.
